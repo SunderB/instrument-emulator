@@ -8,27 +8,76 @@
   </head>
 
   <style>
+    * {
+      font-family: Cartilo, Helvetica, sans-serif;
+    }
+    #button_pad {
+      display: inline-block;
+      border-radius: 8px;
+      background-color: darkslateblue;
+      box-shadow: 0 30px #314062;
+      margin: 20px 20px 40px 20px;
+      filter: drop-shadow(8px 8px 10px rgba(0,0,0,0.5));
+    }
+
+    #buttons {
+      display: grid;
+      grid-template-columns: 150px 150px 150px 150px;
+      background-color: ;
+      padding: 10px 10px 20px 10px;
+
+      grid-column-gap: 10px;
+      grid-row-gap: 10px;
+    }
+
+    button {
+      /*! background-color: gradient(); */
+      border: 4px solid rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      font-size: 20px;
+      width: 150px;
+      height: 150px;
+      text-align: center;
+      box-shadow: 0 9px #999;
+      border-radius: 15px;
+      background-image: linear-gradient(to right, #626262, #808080);
+      color: white;
+      border-inline: 5px solid rgba(0, 0, 0, 0.3);
+    }
+
+    button:hover {
+      background-color: #67b0cc;
+      cursor: pointer;
+      transition: 0.2s;
+      /*! background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet); */
+      border: 5px solid rgba(255, 255, 255, 0.5);
+    }
+
+    button:active {
+      /*! background-color: #f9f9f9; */
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+      transition: 0.05s;
+      background-blend-mode: color;
+      background-image: linear-gradient(to right, #626262, #808080);
+      border: 5px solid rgb(255, 255, 255);
+    }
   </style>
 
   <body onload="createButtons()">
-
-    <style>
-      /* CSS goes here! */
-    </style>
-
-    <!-- Audio elements go here! -->
     <div id="audio_elements">
-    <audio id="harp">
-      <source src="./sounds/harp.wav" type="audio/wav">
-      If you can see this, your browser does not support HTML5 audio. :(
-    </audio>
+      <!-- Audio elements go here! -->
     </div>
 
     <h1>Sunder's Super Duper Soundboard</h1>
+    <h2>UI taken from another similar previous project of mine</h2>
+    <h3 style="color: grey"><em>Soundier sound!</em></h3>
 
     <!-- Create the soundboard buttons -->
-    <div id = "buttons">
-      <button onclick="toggleAudio('', 0)">haha, nice</button>
+    <div id="button_pad">
+      <div id="buttons">
+
+      </div>
     </div>
 
     <script>
