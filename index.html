@@ -7,25 +7,71 @@
     <link rel="shortcut icon" type="image/png" href="./favicon.png"/>
   </head>
 
-  <body>
+  <style>
+  </style>
+
+  <body onload="createButtons()">
 
     <style>
       /* CSS goes here! */
     </style>
 
     <!-- Audio elements go here! -->
+    <div id="audio_elements">
+    <audio id="harp">
+      <source src="./sounds/harp.wav" type="audio/wav">
+      If you can see this, your browser does not support HTML5 audio. :(
+    </audio>
+    </div>
 
-    <h1>NAME'S SOUNDBOARD</h1>
+    <h1>Sunder's Super Duper Soundboard</h1>
 
     <!-- Create the soundboard buttons -->
-    <button onclick="toggleAudio('', 0)">haha, nice</button>
+    <div id = "buttons">
+      <button onclick="toggleAudio('', 0)">haha, nice</button>
+    </div>
 
     <script>
       // Create the playing boolean list
 
-      function toggleAudio(sound, number) {
-        console.log("Audio toggled")
+      let sounds = {
+        "bass-drum": ["Bass Drum", "./sounds/bass-drum.wav"],
+        "bugle-first-call": ["Bugle First Call", "./sounds/bugle-first-call.wav"],
+        "chinese-gong": ["Chinese Gong", "./sounds/chinese-gong.wav"],
+        "congas": ["Congas", "./sounds/congas.wav"],
+        "drumroll": ["Drumroll", "./sounds/drumroll.wav"],
+        "female-opera": ["Female Opera", "./sounds/female-opera.wav"],
+        "harp": ["Harp", "./sounds/haro.wav"],
+        "military-drum": ["Military Drum", "./sounds/military-drum.wav"],
+        "tap-dancing": ["Tap Dancing", "./sounds/tap-dancing.wav"]
+      };
+
+      function createButtons() {
+        for (let [id, value] of Object.entries(sounds)) {
+          console.log(`${id}: ${value}`);
+          var audio_div = document.getElementById('audio_elements');
+          var button_div = document.getElementById('buttons');
+
+          // Create audio object
+          var audio = new Audio(value[1]);
+          audio.setAttribute("id", id);
+          audio_div.appendChild(audio);
+
+          // Create button
+          var button = document.createElement("button");
+          button.setAttribute("onclick", `toggleAudio("${id}", 0)`);
+          button.innerHTML = value[0];
+          button_div.appendChild(button);
+        }
       }
+
+      function toggleAudio(sound, number) {
+        console.log("Audio toggled");
+        console.log(sound);
+        let audio = document.getElementById(sound);
+        audio.play();
+      }
+
     </script>
 
   </body>
